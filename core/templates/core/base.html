@@ -1,0 +1,153 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}PETSHOP{% endblock title %}</title>
+
+    <link rel="shortcut icon" href="{% static 'core/images/favicon.png' %}" type="image/x-icon" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/styles.css'%}">
+    <link href="{% static 'core/css/forms.css'%}" rel="stylesheet">
+
+    {% block stylesheet %}
+
+    {% endblock stylesheet %}
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="main-header">
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">Club Canino</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <!-- Usuario logeado -->
+                            {% if user.is_superuser %}
+                                <!-- Superusuario -->
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'mis_datos_admin' %}">Mis datos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'carrito' %}">Mi Carrito</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'admin_productos' 'crear' 1 %}">Agregar Productos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'admin_productos' 'actualizar' 2 %}">Actualizar Productos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'admin_usuarios' 'crear' 1 %}">Agregar Usuarios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'admin_usuarios' 'actualizar' 15 %}">Actualizar Usuarios</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'admin_bodega' %}">Bodega</a>
+                                </li>
+                                
+                                
+                            {% else %}
+                                <!-- Usuario autenticado pero no es superusuario -->
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'mis_datos_admin' %}">Mis datos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'carrito' %}">Mi Carrito</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="{% url 'nosotros' %}">Nosotros</a>
+                                </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'cerrar_sesion' %}">Cerrar sesión</a>
+                            </li>
+                        {% else %}
+                            <!-- Usuario no logeado -->
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'registrarme' %}">Registrarse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'ingresar' %}">Iniciar sesión</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{% url 'nosotros' %}">Nosotros</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Busca tu producto" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <br>
+
+    <div class="content m-3">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <footer id="footer">
+            <br>
+            <div class="container text-center text-body-secondary border-bottom">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-instagram" viewBox="0 0 16 16" aria-label="Instagram">
+                        <path
+                            d="M8 0a8 8 0 0 0-2.52 15.583v-4.062A3.964 3.964 0 0 1 8 10a3.964 3.964 0 0 1 2.52.521v4.062A8 8 0 0 0 8 0zm2.317 1.238a1.05 1.05 0 0 1 1.384.488c.16.347.27.876.033 1.574-.245.82-.796 1.333-1.481 1.512-.968.242-2.108-.003-3.682-.743a14.08 14.08 0 0 1-3.54-2.244A5.88 5.88 0 0 1 .44 2.846C-.09 3.744-.052 4.784.224 5.715c.754 2.008 2.754 4.445 5.792 6.478 3.037 2.033 4.975 2.987 6.259 3.249 1.56.31 2.57.154 3.406-.063.737-.204 1.285-.648 1.526-1.395.237-.742.187-1.795.05-3.342-.135-1.78-.725-3.046-1.687-4.052-.835-.86-2.006-1.329-3.63-1.368a8.38 8.38 0 0 0-1.856.232zM5.134 3.58a.81.81 0 1 0 0 1.62.81.81 0 0 0 0-1.62zm3.732.021a.81.81 0 1 0 0 1.62.81.81 0 0 0 0-1.62zm2.44 1.53a4.51 4.51 0 0 0-.064.79c-.09 1.296-.66 2.1-1.492 2.45-.654.23-1.688.142-3.02-.365a14.1 14.1 0 0 1-3.44-1.748A11.054 11.054 0 0 0 2.42 6.876a7.045 7.045 0 0 0-.165 1.364c-.044 1.254.058 2.06.166 2.722.106.662.298 1.396.689 2.067.385.655.97 1.142 1.708 1.363.732.22 1.518.14 2.626-.178a14.91 14.91 0 0 0 3.28-1.24c1.03-.498 1.787-1.142 2.333-1.903.572-.785.874-1.624 1.018-2.644.13-1.053.103-1.875.043-2.784a9.75 9.75 0 0 0-.25-1.553 4.12 4.12 0 0 0-.552-1.098zM12.884 4.34c-.238-.27-.568-.417-.987-.42-.42-.005-.732.12-.972.39-.238.27-.378.626-.414 1.05-.024.234-.032.602.048 1.016a3.55 3.55 0 0 0 .543 1.15 2.446 2.446 0 0 0 1.35.837c.29.087.607.086.893-.003a2.5 2.5 0 0 0 1.42-.82c.296-.346.475-.772.546-1.2.08-.417.06-.782.04-1.02a2.77 2.77 0 0 0-.417-1.077 2.194 2.194 0 0 0-1.26-.75z" />
+                    </svg>
+                    <a href="https://www.instagram.com/">Instagram</a>
+                </p>
+            </div>
+            <div class="container text-center text-body-secondary">
+                <p>&copy; {% now "Y" %} Club Canino. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-H6+yoCkREoUCG1R1obB6/LvokuhJK1lW7n9T0JoGOpqHXHsGUgQArztGx83Tds8s"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"
+        integrity="sha384-i7lmf0w+4w2/e36C5ZxRZ1s//r4FncmBlClSFAEUBVQtpw/6tDyRTM9tYZlFqy1V"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"
+        integrity="sha384-FAotTqLXAvMLQH2+04Hdxs1tv8SOI+RZ8LVhyaw4bw3kNTfPT5/t6mvDijU+Hbgd"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'core/js/script.js' %}"></script>
+    <script src="{% static 'core/js/slider.js' %}"></script>
+
+    {% block script %}
+
+    {% endblock script %}
+</body>
+
+</html>

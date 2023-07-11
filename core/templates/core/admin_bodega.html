@@ -1,0 +1,94 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% load custom_filters %}
+
+{% block stylesheet %}
+
+{% endblock stylesheet %}
+
+{% block content %}
+
+    <h1>Mantenedor de bodega PROD</h1>
+
+    <form method="POST" enctype="multipart/form-data" id="form">
+
+        {% csrf_token %} <!-- para proteger contra ataques CSRF. -->
+
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="form-row">
+                    {% for field in form %} <!-- formulario se genera dinámicamente utilizando un bucle --> 
+                        <div class="form-group row mb-2">
+                            <label for="{{ field.id_for_label }}" class="col-sm-5 col-form-label">
+                                {{ field.label }} <!-- Muestra nombre del campo --> 
+                            </label>
+                            <div class="col-sm-7">
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <img id="admin-bodega-imagen" src="{% static 'core/images/sin-imagen.png' %}" style="width: 250px; height: 250px;">
+            </div>
+        </div>
+
+        <div class="mt-2 mb-3">
+            <button id="id_agregar" class="btn btn-primary ancho-150px" type="submit"> Agregar </button>
+            <button id="id_nuevo" class="btn btn-success ancho-150px"> Nuevo </button>
+        </div>
+
+        {% if messages %} <!--  se verifica si hay mensajes --> 
+            {% for message in messages %} <!-- si los hay, se muestra cada mensaje en una alerta. --> 
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+    </form>
+
+    {% if productos %} <!--  se verifica si hay productos, si los hay, se muestra una tabla para mostrar los detalles de cada producto. --> 
+        <table id="tabla-principal" class="table table-hover">
+            <thead>
+                <tr>
+                    <th> ID </th>  <!-- creacion de la tabla principal --> 
+                    <th> Categoría </th>
+                    <th> Producto </th>
+                    <th> Estado </th>
+                    <th> Imagen </th>
+                    <th> Acción </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %} <!-- cada producto se muestras en una fila utilizando Bucle  --> 
+                    <tr>
+                        <td> {{ producto.bodega_id }} </td>  <!-- {{ producto.nombre_atributo }}. --> 
+                        <td> {{ producto.nombre_categoria }} </td>
+                        <td> {{ producto.nombre_producto }} </td>
+                        <td> {{ producto.estado }} </td>
+                        <td>
+                            <img src="/media/{{ producto.imagen }}" class="producto-sm" alt="" style="width: 250px; height: 250px;"> 
+                        </td> 
+                        <td> <!-- cargar img --> 
+                            {% if producto.estado == 'En bodega' %}
+                                <a href="{% url 'eliminar_producto_en_bodega' producto.bodega_id %}"    
+                                    class="btn btn-danger btn-sm boton_chico"> Eliminar </a> <!-- redirige a la vista de eliminación correspondiente  -->  
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock content %} <!-- cierre del contenido  --> 
+
+{% block script %}
+    <input type="hidden" id="url_obtener_productos" value="{% url 'obtener_productos' %}">
+    <script src="{% static 'core/js/admin_bodega.js' %}"></script>
+    <script src="{% static 'core/js/categoriaScript.js' %}"></script>
+{% endblock script %}

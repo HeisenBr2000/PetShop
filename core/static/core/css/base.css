@@ -1,0 +1,87 @@
+h1 {
+    color: #222f3e;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.logo-menu-superior {
+    height: 40px;
+}
+
+.link-bloque {
+    display: inline-block;
+    text-decoration: none !important;
+    color: #333;
+    text-decoration: none;
+}
+  
+.link-bloque:hover {
+    cursor: pointer;
+    border: 1px solid #2980b9;
+}
+
+.error-message {
+    color: #c0392b !important;
+    font-weight: bold !important;
+}
+
+th {
+    vertical-align: top;
+    background-color: #f5f5f5 !important;
+}
+
+.table-hover .letra-boleta-anulada td {
+    color: #c0392b !important;
+    font-weight: bold !important;
+}
+  
+.producto-sm {
+    width: 82px;
+    height: 70px;
+}
+
+.index-producto-imagen {
+    max-width: 165px;
+}
+
+.index-producto-descripcion {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.index-card-footer {
+    background-color: transparent;
+    border-top: none;
+}
+
+#admin-producto-imagen {
+    max-width: 350px;
+    max-height: 350px;
+    padding: 3px;
+    border: 2px solid #ccc;
+}
+
+#admin-bodega-imagen {
+    max-width: 150px;
+    max-height: 150px;
+    padding: 3px;
+    border: 2px solid #ccc;
+}
+
+#registrarme-imagen {
+    max-width: 150px;
+    max-height: 150px;
+    padding: 3px;
+    border: 2px solid #ccc;
+}
+  
+.ancho-150px {
+    width: 150px;
+}
+
+/* div {
+    border: 1px solid blue;
+} */
+

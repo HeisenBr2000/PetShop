@@ -1,0 +1,85 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+    
+    <h1> Carrito de compras </h1>
+    
+    <table id="tabla-principal" class="table table-hover"> <!-- se define la tabla   -->
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Categoría </th>
+                <th> Producto </th>
+                <th> Precio </th>
+                <th> % Descto <br> Subscriptor </th>
+                <th> % Descto <br> Oferta </th>
+                <th> % Descto <br> Total </th>
+                <th class="text-end"> Descuentos </th>
+                <th class="text-end"> Precio a pagar </th>
+                <th> Opciones </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in detalle_carrito %} <!-- Para cada elemento en el carrito de compras se muestra una fila en la tabla con la información correspondiente  -->
+                <tr>
+                    <td> {{ item.id }} </td>
+                    <td> {{ item.producto.categoria.nombre }} </td>
+                    <td> {{ item.producto.nombre }} </td>
+                    <td> {{ item.precio|formatear_dinero }} </td>
+                    <td> {{ item.descuento_subscriptor|formatear_porcentaje }} </td>
+                    <td> {{ item.descuento_oferta|formatear_porcentaje }} </td>
+                    <td> {{ item.descuento_total|formatear_porcentaje }} </td>
+                    <td class="text-end"> {{ item.descuentos|formatear_dinero }} </td>
+                    <td class="text-end"> {{ item.precio_a_pagar|formatear_dinero }} </td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="{% url 'ficha' item.producto.id %}" class="btn btn-sm btn-primary"> Detalle </a>  <!--El botón "Detalle" redirige al usuario a la página de detalles del producto correspondiente -->
+                            <a href="{% url 'eliminar_producto_en_carrito' item.id %}" class="btn btn-sm btn-danger"> Eliminar </a> <!--El botón "eliminar" elimina del carro de compras -->
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        <tfoot> <!--Pie de tabla correspondiente -->
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="fw-bold"> Precio sin IVA </td> <!-- La primera fila muestra el precio total sin incluir el IVA. -->
+                <td class="fw-bold text-end"> {{ monto_sin_iva|formatear_dinero }} </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="fw-bold"> Valor del IVA (19%) </td> <!-- La segunda fila muestra el valor del IVA (impuesto del 19%). -->
+                <td class="fw-bold text-end"> {{ iva|formatear_dinero }} </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="fw-bold"> Total a pagar </td> <!-- La tercera fila muestra el total a pagar, que incluye el precio sin IVA y el valor del IVA -->
+                <td class="fw-bold text-end"> {{ total_a_pagar|formatear_dinero }} </td>
+                <td></td>
+            </tr>
+        </tfoot>
+        </tbody>
+    </table>
+    
+{% endblock content %}

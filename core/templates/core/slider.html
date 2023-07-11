@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+{% load static %}
+<!--CSS-->
+{% block stylesheet %}
+    <link href="{% static 'core/css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'core/css/styles.css'%}" rel="stylesheet">
+    <script src="{% static 'js/slider.js' %}"></script>
+    
+{% endblock %}
+
+{% block content %}
+
+<div class="container-slider">
+  <div class="slider" id="slider">
+    <div class="slider__section">
+      <img src="{% static 'img/img7.jpg' %}" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">PERROS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+    <div class="slider__section">
+      <img src="{% static 'img/img8.jpg' %}" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">GATOS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+    <div class="slider__section">
+      <img src="{% static 'img/img9.jpg' %}" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">PERROS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+    <div class="slider__section">
+      <img src="{% static 'img/img10.jpg' %}" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">GATOS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
+  <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
+</div>

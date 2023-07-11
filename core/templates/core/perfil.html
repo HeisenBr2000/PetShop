@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Perfil de usuario</h1>
+  <p>Nombre: {{ perfil.usuario.first_name }}</p>
+  <p>Apellido: {{ perfil.usuario.last_name }}</p>
+  <p>Tipo de usuario: {{ perfil.tipo_usuario }}</p>
+  <p>RUT: {{ perfil.rut }}</p>
+  <p>Dirección: {{ perfil.direccion }}</p>
+  <p>Subscrito: {{ perfil.subscrito }}</p>
+  <img src="{{ perfil.imagen.url }}" alt="Imagen de perfil">
+{% endblock %}

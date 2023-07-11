@@ -1,0 +1,634 @@
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styles for the form inputs and labels */
+.form-floating {
+  margin-bottom: 15px;
+}
+
+/* Styles for the "Recuérdame" checkbox */
+.checkbox {
+  margin-bottom: 15px;
+}
+
+/* Styles for the "Iniciar Sesión" button */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Styles for the "¿Deseas crearte una cuenta?" link */
+.registrarse {
+  display: block;
+  margin-top: 20px;
+}
+
+/* Styles for the "Ingresa como administrador" link */
+.administrar {
+  display: block;
+  margin-top: 10px;
+  color: #999; 
+}
+
+* {
+  box-sizing: border-box;
+
+}
+
+
+
+
+body {
+  margin: 0;
+  font-family: "QuickSand";
+  background: pink;
+
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+
+
+.main-header__title {
+  display: inline;
+  height: fit-content;
+  position: center;
+  align-items: center;
+  font-size: 2.5em;
+  background: purple;
+  margin: 30px;
+  color: white;
+  font-family: "GreatVibes";
+  border: 2px solid black;
+
+
+}
+
+.main-header__txt {
+  display: inline;
+  height: fit-content;
+
+  align-items: center;
+  font-size: 1.5em;
+  justify-content: space-around;
+
+  margin: auto;
+  margin-block: 40px;
+
+
+
+}
+
+
+
+
+.main-header__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+  background: pink;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+
+
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.menu__item {
+  padding: 25px;
+  text-align: center;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.mostrar {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu__link {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  border: 1px solid black;
+  margin: auto;
+
+}
+
+
+.icon-menu {
+  font-size: 2.5em;
+  border: 1px solid #454546;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid black;
+  background: purple;
+  position: relative;
+
+}
+
+.main-header__btn {
+
+
+  font-size: 1.4em;
+  display: block;
+  padding: 20px 20px;
+  justify-content: space-between;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  background: purple;
+  border: 2px solid black;
+
+
+
+
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+
+}
+
+.navbar-brand {
+  font-size: 30px;
+
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.thumbnail-product {
+  height: 200px !important;
+  max-width: 150px;
+}
+
+.sale-real-price {
+  text-decoration: line-through;
+
+}
+
+.sale-offer-price {
+  color: black;
+
+}
+
+.registrarse {
+  text-decoration: none;
+  border-color: blue;
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif
+}
+
+.recuperacionContraseña {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+tr {
+  border: 1px solid black !important;
+}
+
+td {
+  border: 1px solid black !;
+}
+
+.titulo {
+  width: 100px;
+}
+
+.user-image {
+  max-width: 200px;
+}
+
+.icon-menu {
+  font-size: 1.5em;
+  border: 1px solid #454546;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.main-header__input {
+  display: block;
+  padding: 10px;
+  justify-content: space-around;
+  width: 50%;
+  margin-right: 20px;
+}
+
+.container-slider {
+
+  margin: 50px 0;
+  position: relative;
+  box-shadow: 0 0 0 10px #fff,
+      0 15px 50px;
+  overflow: hidden;
+
+}
+
+.mostrar {
+  opacity: 1;
+  visibility: visible;
+  z-index: 9999;
+}
+
+.menu {
+  position: absolute;
+  top: 305px;
+  left: 0;
+  width: 100%;
+  background: purple;
+  list-style: none;
+  padding: 0px;
+  margin: auto;
+  z-index: 9999;
+
+
+
+
+
+
+}
+
+.main-nav {
+  visibility: hidden;
+
+
+
+
+
+}
+
+
+
+
+
+
+
+.slider {
+  display: flex;
+  width: 400%;
+  height: 300px;
+  margin-left: -100%;
+  position: relative;
+
+
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100%;
+}
+
+.slider__section {
+  width: 100%;
+  position: relative;
+
+}
+
+.slider__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.slider__btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  font-weight: bold;
+  font-family: monospace;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 999;
+
+}
+
+.slider__btn:hover {
+  background: #fff;
+
+}
+
+.slider__btn--left {
+  left: 10px;
+}
+
+.slider__btn--right {
+  right: 10px;
+}
+
+.slider-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: pink;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  text-align: center;
+  z-index: 999;
+
+}
+
+.slider__link {
+  display: block;
+  border: 0.5px solid black;
+  color: white;
+  background: purple;
+  padding: 3%;
+  text-align: center;
+  text-decoration: none;
+  width: 150px;
+  margin: 2px auto;
+}
+
+.main {
+  padding: 0 20px;
+}
+
+.slider__title {
+  font-size: 2.2em;
+  margin: 0;
+}
+
+.slider__txt {
+  margin: 5px;
+}
+
+/*estilos producto*/
+.container-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
+
+
+
+
+
+
+  /*
+  trucos columnas : 1
+  el primer termino de un grid template puede ser una funcion. (repeat)
+  segunda parte : auto fit rellena todo el espacio, autofill deja espacio si hay menos elementos
+
+  */
+  grid-gap: 20px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+  background: purple;
+
+
+}
+
+.product:before {
+  content: "New";
+  background-color: black;
+  padding: 10px;
+  width: 50px;
+  top: 15px;
+  right: 2.5px;
+  position: absolute;
+  transform: rotate(-90deg);
+  color: white;
+
+}
+
+.product__price {
+  font-weight: bold;
+  color: white;
+}
+
+.product__icon {
+  display: block;
+  margin-top: 10px;
+}
+
+.product__img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.product__title {
+  color: #fff;
+}
+
+
+.container-editor {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border: 1px solid purple;
+
+
+
+
+}
+
+.editor__item {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.editor__img {
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+
+
+}
+
+.editor__circle {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  align-items: center;
+  bottom: -90px;
+  right: -200px;
+  padding: 20px;
+  color: black;
+  padding: 20px;
+  padding-bottom: 70px;
+  padding-right: 50px;
+  font-size: 1.1em;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.5s;
+}
+
+.editor__item:hover .editor__circle {
+  transform: scale(1.2);
+  bottom: -90px;
+  right: -40px;
+}
+
+.editor__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.editor__item:hover:before {
+  opacity: 1;
+
+}
+
+.container_resenia {
+  text-align: center;
+  background: #ffff;
+  padding: 20px;
+  margin: 20px 0;
+
+}
+
+.reseniatitle {
+  color: black;
+  text-align: center;
+}
+
+.main-footer {
+  background: #151515;
+  color: white;
+  padding: 30px 20px;
+
+}
+
+.footer__txt {
+  color: #454546;
+}
+
+.footer__title {
+  border-bottom: 1px dotted #555;
+  padding-bottom: 20px;
+}
+
+.footer__link {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 10px 0;
+}
+
+.footer__input {
+  background: #151515;
+  width: 100%;
+  display: block;
+  padding: 20px;
+}
+
+/*estilos tablet*/
+
+@media screen and (min-width:768px) {
+  .slider {
+      height: 400px;
+  }
+
+  .editor__item {
+      height: 250px;
+  }
+
+  .menu {
+      top: auto;
+  }
+}
+
+
+
+
+
+
+@media screen and (min-width:425px) {
+  .slider {
+      height: 400px;
+  }
+
+  .main-header__title {
+      display: inline;
+      height: fit-content;
+      position: center;
+      align-items: center;
+      font-size: 2em;
+      background: purple;
+      margin: 30px;
+      color: white;
+      font-family: "GreatVibes";
+      border: 2px solid black;
+
+  }
+
+  .main-header__container {
+      font-size: 1em;
+
+  }
+
+  .menu {
+      top: 350px;
+  }
+}
+

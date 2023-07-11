@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block stylesheet %}
+  <link href="{% static 'core/css/styles.css' %}" rel="stylesheet">
+{% endblock stylesheet %}
+
+
+{% block content %}
+
+<div class="container-slider"> <!-- slider -->
+  <div class="slider" id="slider">
+    <div class="slider__section">
+      <img src="/media/img7.jpg" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">PERROS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+    <div class="slider__section">
+      <img src="/media/img8.jpg" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">GATOS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+    <div class="slider__section">
+      <img src="/media/img9.jpg" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">PERROS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+    <div class="slider__section">
+      <img src="/media/img10.jpg" alt="" class="slider__img">
+      <div class="slider-content">
+        <h2 class="slider__title">GATOS</h2>
+        <p class="slider__txt">50% dcto. productos destacados</p>
+        <a href="" class="slider__link">Buy Now</a>
+      </div>
+    </div>
+  </div>
+  <div class="slider__btn slider__btn--right" id="btn-right">&#62;</div>
+  <div class="slider__btn slider__btn--left" id="btn-left">&#60;</div>
+</div>
+  
+  {% if productos %} <!-- se utiliza para iniciar un bloque condicional en Django, si es verdadera, osea, encuentra productos, se inializa la siguiente linea de codigo  -->
+    <div class="container-fluid"> <!--  container para los productos   -->
+      <div class="row"> <!--  organizar productos en una cuadricula -->
+        {% for producto in productos %} <!-- se recorre cada producto de la lista  -->
+          <div class="card col-sm-12 col-md-6 col-lg-3 col-xl-2 border border-1 m-2 pt-3 pb-4" style="width: 15.2rem;"> <!-- se muestra la imagen del producto   -->
+            <a href="{% url 'ficha' producto.id %}" class="link-bloque"> <!--  redirije al detalle del producto (utiliza la función url de Django para generar la URL correspondiente a la vista "ficha" y pasa el ID del producto como parámetro.) -->
+              <img src="/media/{{ producto.imagen }}" class="index-producto-imagen card-img-top" alt="" style="width: 200px; height: 200px;"> <!-- se muestra la imagen del producto, mediante url en el campo img   -->
+              <div class="card-body"> <!-- se genera el cuerpo de la tarjeta   -->
+                <h6 class="card-title font-weight-bold mb-0"> <!-- en negrita y sin margen inf   -->
+                  {{ producto.nombre }} 
+                </h6>
+                <h7 class="card-title"> 
+                  {{ producto.html_estado|safe }} <!--Se utiliza el filtro safe para indicar que el contenido debe ser tratado como HTML seguro y no escapar caracteres especiales. -->
+                  <br>
+                  {{ producto.html_precio|safe }} 
+                </h7>
+                <p class="card-text index-producto-descripcion" data-toggle="tooltip" title="{{ descripcion_producto }}"> 
+                  {{ producto.descripcion }}
+                  <br>
+                  {{ producto.html_stock }}
+                </p>
+              </div>
+            </a>
+          </div>
+        {% endfor %} <!-- se cierra el bucle -->
+      </div>
+    </div>
+  {% else %} <!-- si no se encuentran. -->
+    <h2>No se encontraron productos</h2> 
+  {% endif %}
+
+{% endblock content %}

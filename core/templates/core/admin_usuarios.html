@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block content %}
+
+  <h1> Mantenedor de usuarios </h1>
+
+  <form method="POST" enctype="multipart/form-data" id="form">
+
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-sm-12 col-md-6">
+        <div class="form-row">
+          {% for field in form %}
+            <div class="form-group row mb-2">
+              <label for="{{ field.id_for_label }}" class="col-sm-5 col-form-label">
+                {{ field.label }}
+              </label>
+              <div class="col-sm-7">
+                {{ field }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        {% if form.imagen.value %}
+          <img id="admin-usuario-imagen" src="/media/{{ form.imagen.value }}" style="width: 250px; height: 250px;">
+        {% else %}
+          <img id="admin-usuario-imagen" src="{% static 'core/images/sin-imagen.png' %}" style="width: 250px; height: 250px;">
+        {% endif %}
+      </div> 
+    </div>
+
+    <div class="mt-2 mb-3">
+      <input type="submit" class="btn btn-primary ancho-150px" value="Guardar">
+      <a class="btn btn-success ancho-150px" href="{% url 'admin_usuarios' 'crear' '0' %}"> Nuevo </a>
+      {% if form.instance.id %}
+        <a class="btn btn-danger ancho-150px" href="{% url 'admin_usuarios' 'eliminar' form.instance.id %}"> Eliminar </a>
+      {% endif %}
+    </div>
+
+  </form>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  {% if perfiles %}
+    <table id="tabla-principal" class="table table-hover">
+        <thead>
+            <tr>
+                <th> ID </th>
+                <th> Usuario </th>
+                <th> Tipo de usuario </th>
+                <th> Rut </th>
+                <th> Dirección </th>
+                <th> Subscrito </th>
+                <th> Imagen </th>
+                <th> Acciones </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for perfil in perfiles %}
+                <tr>
+                    <td> {{ perfil.id }} </td>
+                    <td> {{ perfil.usuario }} </td>
+                    <td> {{ perfil.get_tipo_usuario_display }} </td>
+                    <td> {{ perfil.rut }} </td>
+                    <td> {{ perfil.direccion }} </td>
+                    <td> {{ perfil.subscrito }} </td>
+                    <td>
+                        <img src="/media/{{ perfil.imagen }} "  class="perfil-sm" alt="" style="width: 100px; height: 50px;">
+                    </td>
+                    <td>
+                        <a href="{% url 'admin_usuarios' 'actualizar' perfil.id %}" class="btn btn-primary btn-sm boton_chico"> Editar </a>
+                        <form method="POST" action="{% url 'admin_usuarios' 'eliminar' perfil.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm boton_chico"> Eliminar </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  {% endif %}
+
+{% endblock content %}
+
+{% block script %}
+  <script src="{% static 'core/js/admin_usuarios.js' %}"></script>
+{% endblock script %}

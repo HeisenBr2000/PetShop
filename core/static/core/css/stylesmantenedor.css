@@ -1,0 +1,12 @@
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.center-table {
+  width: 90%;
+}

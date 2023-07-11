@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <h1>Mis datos de cuenta</h1>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Nombre de usuario:</th>
+        <td>{{ perfil.usuario.username }}</td>
+      </tr>
+      <tr>
+        <th>Nombre:</th>
+        <td>{{ perfil.usuario.first_name }}</td>
+      </tr>
+      <tr>
+        <th>Apellido:</th>
+        <td>{{ perfil.usuario.last_name }}</td>
+      </tr>
+      <tr>
+        <th>Correo electrónico:</th>
+        <td>{{ perfil.usuario.email }}</td>
+      </tr>
+      <tr>
+        <th>Imagen de perfil:</th>
+        <td>
+          {% if perfil.imagen %}
+            <img src="{{ perfil.imagen.url }}" alt="Imagen de perfil" style="width: 250px; height: 250px;">
+          {% else %}
+            <p>No se ha cargado ninguna imagen de perfil.</p>
+          {% endif %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock content %}

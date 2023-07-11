@@ -1,0 +1,1 @@
+call C:\ProyectosDjango\TiendaPetShopFinal_venv\Scripts\activate.bat
